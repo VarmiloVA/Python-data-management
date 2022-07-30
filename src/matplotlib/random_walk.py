@@ -30,6 +30,7 @@ class RandomWalk:
 
             #Calcula la nueva posición.
             x = self.x_values[-1] + x_step
+
             y = self.y_values[-1] + y_step
 
             self.x_values.append(x)
@@ -37,17 +38,23 @@ class RandomWalk:
 
 if __name__ == '__main__':
     while True:
-        rw = RandomWalk(5000)
+        rw = RandomWalk(50000)
         rw.fill_walk()
 
         #Trazar los puntos del camino
         plt.style.use('classic')
         fig, ax = plt.subplots()
-        ax.scatter(rw.x_values, rw.y_values, c='red', s=15)
+        ax.scatter(rw.x_values, rw.y_values, c='grey', s=15, edgecolors='none')
+        ax.scatter(rw.x_values[0], rw.y_values[0], c='black', s=60, edgecolors='none')
+        ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', s=60, edgecolors='none')
+
+        #Ocultar los ejes
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
     
         plt.show()
 
         #¿Hacer otro camino?
         keep_running = input("Make another walk? (y/n): ")
         if keep_running.lower() == 'n':
-            break
+            break                                                                                         
