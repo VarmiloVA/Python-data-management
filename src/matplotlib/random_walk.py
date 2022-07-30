@@ -17,11 +17,11 @@ class RandomWalk:
         while len(self.x_values) < self.num_points:
             #Decide en que dirección ir y cuánto avanzar en esa dirección.
             x_direction = choice([1, -1])
-            x_distance = choice([0, 1, 2, 3, 4])
+            x_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
             x_step = x_direction * x_distance
 
             y_direction = choice([1, -1])
-            y_distance = choice([0, 1, 2, 3, 4])
+            y_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
             y_step = y_direction * y_distance
 
             #Rechaza movimientos que no van a ninguna parte.
@@ -37,24 +37,18 @@ class RandomWalk:
             self.y_values.append(y)
 
 if __name__ == '__main__':
-    while True:
-        rw = RandomWalk(50000)
-        rw.fill_walk()
+    rw = RandomWalk(50_000)
+    rw.fill_walk()
 
-        #Trazar los puntos del camino
-        plt.style.use('classic')
-        fig, ax = plt.subplots()
-        ax.scatter(rw.x_values, rw.y_values, c='grey', s=15, edgecolors='none')
-        ax.scatter(rw.x_values[0], rw.y_values[0], c='black', s=60, edgecolors='none')
-        ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', s=60, edgecolors='none')
+    #Trazar los puntos del camino
+    plt.style.use('classic')
+    fig, ax = plt.subplots(figsize=(9, 6), dpi=128)
+    ax.scatter(rw.x_values, rw.y_values, c='blue', s=1, edgecolors='none')
+    ax.scatter(rw.x_values[0], rw.y_values[0], c='black', s=40, edgecolors='none')
+    ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', s=40, edgecolors='none')
 
-        #Ocultar los ejes
-        ax.get_xaxis().set_visible(False)
-        ax.get_yaxis().set_visible(False)
+    #Ocultar los ejes
+    ax.get_xaxis().set_visible(False)
+    ax.get_yaxis().set_visible(False)
     
-        plt.show()
-
-        #¿Hacer otro camino?
-        keep_running = input("Make another walk? (y/n): ")
-        if keep_running.lower() == 'n':
-            break                                                                                         
+    plt.show()                                                                  
