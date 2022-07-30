@@ -25,7 +25,7 @@ def visual(x_val, y_val):
     ax.tick_params(axis='x', which='minor', labelsize=8)
 
     #Establece el rango de cada eje.
-    ax.set(xlim=(0,1100), ylim=(0,1100000))
+    ax.set(xlim=(0,1_100), ylim=(0,1_100_000))
 
     plt.savefig('figs/squares.png', bbox_inches='tight')
     plt.show()

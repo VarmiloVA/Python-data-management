@@ -22,7 +22,7 @@ def visual(x_val, y_val):
     ax.tick_params(axis='both', which='major', labelsize=14)
 
     #Rango de cada eje
-    ax.set(xlim=(0, 5100), ylim=(0, 145000000000))
+    ax.set(xlim=(0, 5100), ylim=(0, 145_000_000_000))
 
     #Guardando y mostrando gráfico
     plt.savefig('figs/cubes.png')
