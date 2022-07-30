@@ -3,3 +3,4 @@ __pycache__/
 #Ignore venv-related archives.
 .venv/
 _requirements.txt
+src/matplotlib/figs/
