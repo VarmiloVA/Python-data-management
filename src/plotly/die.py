@@ -1,4 +1,5 @@
-import plotly
+from plotly.graph_objs import Bar, Layout
+from plotly import offline
 from random import randint
 
 class Die:
@@ -24,4 +25,11 @@ if __name__ == '__main__':
         frequency = results.count(value)
         frequencies.append(frequency)
     
-    print(frequencies)
+    #Visualizing the results
+    x_values = list(range(1, die.sides+1))
+    data = [Bar(x=x_values, y=frequencies)]
+    x_axis_config = {'title': 'Result'}
+    y_axis_config = {'title': 'Frequency of Result'}
+    my_layour = Layout(title=str(f'Results of rolling a D{die.sides} 1000 times'),
+        xaxis=x_axis_config, yaxis=y_axis_config)
+    offline.plot({'data': data, 'layout': my_layour}, filename=str(f'd{die.sides}.html'))
