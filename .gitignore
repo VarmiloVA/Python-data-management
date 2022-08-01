@@ -1,6 +1,9 @@
 #Ignore pycache.
-__pycache__/
+src/plotly/__pycache__/
+src/load_data/__pycache__/
 #Ignore venv-related archives.
 .venv/
 _requirements.txt
 src/matplotlib/figs/
+src/load_data/earthquakes/graphs/
+src/plotly/graphs/
