@@ -5,5 +5,5 @@ src/load_data/__pycache__/
 .venv/
 _requirements.txt
 src/matplotlib/figs/
-src/load_data/earthquakes/graphs/
-src/plotly/graphs/
+src/load_data/earthquakes/graphs/*.html
+src/plotly/graphs/*.html
