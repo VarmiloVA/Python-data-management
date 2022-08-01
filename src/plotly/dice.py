@@ -26,6 +26,6 @@ if __name__ == '__main__':
     data = [Bar(x=x_values, y=frequencies)]
     x_axis_config = {'title': 'Result', 'dtick': 1}
     y_axis_config = {'title': 'Frequency of Result'}
-    my_layour = Layout(title=str(f'Results of rolling a D{die_1.sides} and a D{die_2.sides} 1000 times'),
+    my_layout = Layout(title=str(f'Results of rolling a D{die_1.sides} and a D{die_2.sides} 1000 times'),
         xaxis=x_axis_config, yaxis=y_axis_config)
-    offline.plot({'data': data, 'layout': my_layour}, filename=str(f'd{die_1.sides}_d{die_2.sides}.html'))
+    offline.plot({'data': data, 'layout': my_layout}, filename=str(f'd{die_1.sides}_d{die_2.sides}.html'))
