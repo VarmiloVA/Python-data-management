@@ -12,17 +12,29 @@ with open(filename, 'r') as f:
 #     json.dump(all_eq_data, f, indent=4)
 
 earthquakes = all_eq_data["features"]
-mags, lons, lats = [], [], []
+mags, lons, lats, hover_texts = [], [], [], []
 for earthquake in earthquakes:
     mag = earthquake["properties"]["mag"]
     lon = earthquake["geometry"]["coordinates"][0]
     lat = earthquake["geometry"]["coordinates"][1]
+    title = earthquake["properties"]["title"]
     mags.append(mag)
     lons.append(lon)
     lats.append(lat)
 
 # Locates the earthquakes in a world map
-data = [Scattergeo(lon=lons, lat=lats)]
+data = [{
+    "type": "scattergeo",
+    "lon": lons,
+    "lat": lats,
+    "text": hover_texts,
+    "marker": {
+        "size": [5 * mag for mag in mags],
+        "color": mags,
+        "colorscale": "Viridis",
+        "reversescale": True,
+        "colorbar": {'title': 'Magnitude'}
+}}]
 my_layout = Layout(title='Global Earthquakes')
 
 fig = {'data': data, 'layout': my_layout}
