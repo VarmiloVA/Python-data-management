@@ -21,6 +21,7 @@ for earthquake in earthquakes:
     mags.append(mag)
     lons.append(lon)
     lats.append(lat)
+    hover_texts.append(title)
 
 # Locates the earthquakes in a world map
 data = [{
