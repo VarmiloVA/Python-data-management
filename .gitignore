@@ -7,4 +7,3 @@ _requirements.txt
 src/matplotlib/figs/
 src/load_data/earthquakes/graphs/*.html
 src/plotly/graphs/*.html
-src/load_data/APIs
