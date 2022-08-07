@@ -1,4 +1,3 @@
-from unicodedata import name
 import requests
 from plotly.graph_objs import Bar
 from plotly import offline
@@ -29,7 +28,7 @@ for repo_dict in repos_dict:
 
     owner = repo_dict["owner"]["login"]
     description = repo_dict["description"]
-    label = f"{owner}<br />{description}"
+    label = f"{owner}<br/>{description}"
     labels.append(label)
 
 # Does the visualization
