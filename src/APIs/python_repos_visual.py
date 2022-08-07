@@ -3,6 +3,8 @@ import requests
 from plotly.graph_objs import Bar
 from plotly import offline
 
+from re import split
+
 # Does a request to the API
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
 headers = {'Accept': 'aplication/vnd.github.v3+json'}
@@ -19,17 +21,25 @@ repo_dicts = response_dict['items']
 repo_names, stars, labels = [], [], []
 for repo_dict in repo_dicts: #Getting the needed data for plotly
     repo_owner = repo_dict['owner']['login']
-    if len(repo_dict['description']) > 255:
-        repo_description = 'Too long'
-    elif len(repo_dict['description']) == 0:
-        repo_description = 'There is no description'
-    else:
-        repo_description = repo_dict['description']
+
+    try:
+        description_list = repo_dict['description'].split(' ')
+        print(f"{description_list}\n")
+
+        if len(description_list) > 25:
+            repo_description = 'Too long'
+        elif repo_dict['description'] == '' or repo_dict['description'] == None:
+            repo_description = 'There is no description'
+        else:
+            repo_description = repo_dict['description']
+
+    except AttributeError:
+        repo_description = 'Could not process the description'
 
     repo_link = repo_dict['html_url']
 
     repo_name = f"<a href='{repo_link}'>{repo_dict['name']}</a>"
-    label = f"Owner: {repo_owner}<br />Description: {repo_description}"
+    label = f"{repo_owner}<br />{repo_description}"
 
     labels.append(label)
     repo_names.append(repo_name)
@@ -68,4 +78,6 @@ fig = {
     'data': data, 
     'layout': layout, 
     }
-offline.plot(fig, filename='python_repos.html')
+
+if __name__ == '__main__':
+    offline.plot(fig, filename='python_repos.html')
