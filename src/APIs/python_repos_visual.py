@@ -24,7 +24,6 @@ for repo_dict in repo_dicts: #Getting the needed data for plotly
 
     try:
         description_list = repo_dict['description'].split(' ')
-        print(f"{description_list}\n")
 
         if len(description_list) > 25:
             repo_description = 'Too long'
@@ -39,7 +38,7 @@ for repo_dict in repo_dicts: #Getting the needed data for plotly
     repo_link = repo_dict['html_url']
 
     repo_name = f"<a href='{repo_link}'>{repo_dict['name']}</a>"
-    label = f"{repo_owner}<br />{repo_description}"
+    label = f"{repo_owner} | {repo_dict['stargazers_count']} ⭐<br />{repo_description}"
 
     labels.append(label)
     repo_names.append(repo_name)
