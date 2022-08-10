@@ -2,6 +2,7 @@ import requests
 
 # Does a request to the API
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+#Documentation for api.github.com is here: https://docs.github.com/es/rest
 headers = {'Accept': 'aplication/vnd.github.v3+json'}
 r = requests.get(url, headers=headers)
 print(f"Status code: {r.status_code}")
