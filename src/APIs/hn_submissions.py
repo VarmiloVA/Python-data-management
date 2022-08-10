@@ -14,7 +14,7 @@ for submission_id in submissions_ids[:30]:
     # Does a individual request to the API for each submission
     url = f"https://hacker-news.firebaseio.com/v0/item/{submission_id}.json"
     r = requests.get(url)
-    print(f"id: {submission_id}\tStatus:: {r.status_code}")
+    print(f"id: {submission_id}\tStatus: {r.status_code}")
     response_dict = r.json()
 
     # Creates a dict for each article
