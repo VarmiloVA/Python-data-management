@@ -24,7 +24,7 @@ for submission_id in submissions_ids[:30]:
             'link': f"http://news.ycombinator.com/item?id={submission_id}",
             'comments': response_dict['descendants']
         }
-    except KeyError: #It's caused when there isn't descendants
+    except KeyError: #It's caused when there an YC article with disabled comments
         submission_dict = {
             'title': response_dict['title'],
             'link': f"http://news.ycombinator.com/item?id={submission_id}",
